@@ -7,6 +7,9 @@ Achieved using the instruction: https://pixls.us/articles/how-to-create-camera-n
 Raw files are generated with Panasonic LX100M2 equipped with Firmware Ver.1.1.
 Pictures are taken with Extended ISO is on (range 100-25600 with ISO increment 1/3 EV).
 
+>NOTE: It turned out that to make `darktable-gen-noiseprofile` script work with Panasonic LX100M2 it's necessary to make a quick fix in `tools/noise/subr.sh`: replace line
+`exiv2 -g "$key" -Pt "$file" 2>/dev/null || :` with line `exiv2 -g "$key" -Pt "$file" | sed -n 2p 2>/dev/null || :`.
+
 You can find log output below:
 ```shell
 [ddyakov@archlinuxdd2 LX100M2_noise_profiles]$ /opt/darktable/libexec/darktable/tools/darktable-gen-noiseprofile -d ./
